@@ -30,6 +30,8 @@ present.
 We can also turn a timer on/off via a button (every 5 seconds). This will add one random joke to the
 favourites list http://api.icndb.com/jokes/random/1 until the list has 10 items.
 
+#### note from myself: I also made sure the code checks newly fetched jokes if they are already favorited, and added a toggle for starring/unstarring inside the randomlist. 
+
 ## How to run
 
 In the project directory, you can run:
