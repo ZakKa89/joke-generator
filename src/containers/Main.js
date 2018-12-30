@@ -67,7 +67,6 @@ class Main extends Component {
         const randomList = [...this.state.randomList]
         const favoriteList = [...this.state.favoriteList]
         const id = favoriteList[i].id
-        console.log(id)
 
         favoriteList.splice(i, 1)
 

@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import StringValidator from '../utilities/StringValidator'
-import LoginModal from '../components/LoginModal.js'
+import Login from '../components/Login.js'
 
-export default class App extends Component {
+export default class LoginContainer extends Component {
     state = {
         username: '',
         password: '',
@@ -30,8 +30,6 @@ export default class App extends Component {
     }
 
     render() {
-        console.log(this.state.validator)
-
-        return <LoginModal {...this.state} onSubmit={this.onSubmit} onChange={this.onChange} />
+        return <Login {...this.state} onSubmit={this.onSubmit} onChange={this.onChange} />
     }
 }

@@ -11,6 +11,8 @@ export const HeaderButton = styled.button({
     color: 'white',
     border: 0,
     width: '15rem',
+    height: '4rem',
+
     ':hover': {
         backgroundColor: 'darkorange',
     },
@@ -22,6 +24,11 @@ export const HeaderButton = styled.button({
     ':disabled': {
         backgroundColor: 'grey',
     },
+})
+
+export const LoginButton = styled(HeaderButton)({
+    fontSize: '2rem',
+    width: '20rem',
 })
 
 export const IconButton = styled.button({
