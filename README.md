@@ -17,8 +17,6 @@ Passwords must contain at least two non-overlapping pairs of letters, like aa, b
 Passwords cannot be longer than 32 characters.
 Passwords can only contain lower case alphabetic characters.
 
-#### note from myself: for the iOl check, I made the assumption that it's about the specific characters: lowercase i, uppercase O and lowercase l.
-
 ### 2. Chuck Norris Joke generator
 We want an Application where we can fetch 10 Random Chuck Norris jokes. These jokes can be fetched
 from the following API http://api.icndb.com/jokes/random/10.
@@ -30,7 +28,13 @@ present.
 We can also turn a timer on/off via a button (every 5 seconds). This will add one random joke to the
 favourites list http://api.icndb.com/jokes/random/1 until the list has 10 items.
 
-#### note from myself: I also made sure the code checks newly fetched jokes if they are already favorited, and added a toggle for starring/unstarring inside the randomlist. 
+## Extra
+
+- for the iOl check, I made the assumption that it's about the specific characters: lowercase i, uppercase O and lowercase l.
+- Added a toggle for starring/unstarring inside the randomlist. 
+- I also made sure the code checks newly fetched jokes if they are already favorited, and starred the jokes in the randomlist accordingly
+- Made sure that removing joke from favorites, also unstars the joke if it's present in the random list
+
 
 ## How to run
 
