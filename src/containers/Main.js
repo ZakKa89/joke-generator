@@ -74,19 +74,32 @@ class Main extends Component {
         //also toggle the star from randomlist
         const randomListIndex = this.findRandomListIndex(id)
 
-        if (-1 !== randomListIndex) randomList[randomListIndex].isFavorite = false
+        if (-1 !== randomListIndex) {
+            randomList[randomListIndex].isFavorite = false
+        }
 
         this.setState({favoriteList, randomList})
     }
 
     addRandomFavorite = () => {
         const favoriteList = [...this.state.favoriteList]
+        const randomList = [...this.state.randomList]
 
         fetchJokes(1).then(data => {
             //make sure joke doesn't exist yet in favorites
-            if (-1 === favoriteList.findIndex(i => i.id === data[0].id)) {
+            if (-1 === this.findFavoriteIndex(data[0].id)) {
                 const newList = [...favoriteList, data[0]]
-                this.setState({favoriteList: newList})
+
+                //also check if joke is in randomList, to set the isFavorite flag
+                const randomListIndex = this.findRandomListIndex(data[0].id)
+
+                if (-1 !== randomListIndex) {
+                    randomList[randomListIndex].isFavorite = true
+                }
+
+                this.setState({favoriteList: newList, randomList})
+            } else {
+                console.log('Joke is already in favorite list')
             }
         })
     }
