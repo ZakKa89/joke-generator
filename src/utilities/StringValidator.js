@@ -65,7 +65,6 @@ export default input => {
     })
 
     return {
-        result,
         isValid: Object.values(result).every(Boolean), //ES2017
         errorMessages: Object.keys(errorMessages).map((item, i) => {
             return !result[item] ? errorMessages[item] : null
