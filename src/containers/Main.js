@@ -44,6 +44,10 @@ class Main extends Component {
         return this.state.favoriteList.findIndex(i => i.id === id)
     }
 
+    findRandomListIndex = id => {
+        return this.state.randomList.findIndex(i => i.id === id)
+    }
+
     toggleFavorite = i => {
         const randomList = [...this.state.randomList]
         const favoriteList = [...this.state.favoriteList]
@@ -60,9 +64,19 @@ class Main extends Component {
     }
 
     removeFavorite = i => {
+        const randomList = [...this.state.randomList]
         const favoriteList = [...this.state.favoriteList]
+        const id = favoriteList[i].id
+        console.log(id)
+
         favoriteList.splice(i, 1)
-        this.setState({favoriteList})
+
+        //also toggle the star from randomlist
+        const randomListIndex = this.findRandomListIndex(id)
+
+        if (-1 !== randomListIndex) randomList[randomListIndex].isFavorite = false
+
+        this.setState({favoriteList, randomList})
     }
 
     addRandomFavorite = () => {
