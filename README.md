@@ -2,6 +2,8 @@
 
 An assignment I had to make to showcase my programming skills. Bootstrapped with create-react-app.
 
+
+
 ## The (combined) Assignment
 
 ### 1. Login App
@@ -44,3 +46,8 @@ In the project directory, you can run:
 ### `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Videos
+
+https://www.useloom.com/share/b837f8dea2564724993848f506cb200d
+https://www.useloom.com/share/6070796155304b3f93a1d05d86898ef9
