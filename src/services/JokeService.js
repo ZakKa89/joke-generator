@@ -1,6 +1,6 @@
 export async function fetchJokes(amount) {
     try {
-        const response = await fetch(`http://api.icndb.com/jokes/random/${amount}?escape=javascript`)
+        const response = await fetch(`http://api.icndb.com/jokes/random/${amount}?escape=javascript&limitTo=[nerdy]`)
         const data = await response.json()
 
         if (data.type === 'success') return data.value

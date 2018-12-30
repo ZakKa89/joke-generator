@@ -4,9 +4,9 @@ import Main from './containers/Main.js'
 import './index.css'
 
 const containerStyle = {
-    display: 'flex',
     height: '100%',
-    backgroundColor: '#ccc',
+    width: '100%',
+    backgroundColor: '#663399', //purple
 }
 
 class App extends Component {

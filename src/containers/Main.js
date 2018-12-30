@@ -110,7 +110,8 @@ class Main extends Component {
     render() {
         const {favoriteList} = this.state
         return (
-            <div>
+            //React.fragment shorthand
+            <>
                 <Header>
                     <FetchButton onClick={this.fetchRandomJokes} />
                     <TimerButton
@@ -120,7 +121,7 @@ class Main extends Component {
                         counter={this.state.counter}
                     />
                 </Header>
-                <div>
+                <div style={{display: 'flex'}}>
                     <RandomList
                         toggleFavorite={this.toggleFavorite}
                         randomList={this.state.randomList}
@@ -128,7 +129,7 @@ class Main extends Component {
                     />
                     <FavoriteList removeFavorite={this.removeFavorite} favoriteList={this.state.favoriteList} />
                 </div>
-            </div>
+            </>
         )
     }
 }
