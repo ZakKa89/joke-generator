@@ -37,6 +37,7 @@ favourites list http://api.icndb.com/jokes/random/1 until the list has 10 items.
 - Added a toggle for starring/unstarring inside the randomlist. 
 - I also made sure the code checks newly fetched jokes if they are already favorited, and starred the jokes in the randomlist accordingly
 - Made sure that removing joke from favorites, also unstars the joke if it's present in the random list
+- Only fetched nerdy jokes from API. This made it easier to test the code which checks if fetched jokes are already present in one of the lists, since there aren't that many nerdy jokes. 
 
 
 ## How to run
