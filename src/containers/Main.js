@@ -123,7 +123,7 @@ class Main extends Component {
             }
             //reset or decrement counter
             this.setState({counter: 0 === this.state.counter ? 5 : this.state.counter - 1})
-        }, 200)
+        }, 1000)
 
         this.setState({timer})
     }

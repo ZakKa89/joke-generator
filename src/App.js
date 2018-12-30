@@ -4,7 +4,7 @@ import Main from './containers/Main.js'
 import './index.css'
 
 const containerStyle = {
-    height: '100%',
+    minHeight: '100%',
     width: '100%',
     backgroundColor: '#663399', //purple
 }
