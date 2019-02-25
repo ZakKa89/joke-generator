@@ -4,7 +4,9 @@ import FavoriteList from '../components/FavoriteList'
 import TimerButton from '../components/TimerButton'
 import Header from '../components/Header'
 import FetchButton from '../components/FetchButton'
-import {fetchJokes} from '../services/JokeService'
+//import {fetchJokes} from '../services/JokeService'
+import  { fetchJokes, toggleFavorite } from '../actions'
+import { connect } from 'react-redux'
 
 class Main extends Component {
     state = {
@@ -133,13 +135,14 @@ class Main extends Component {
         this.setState({timer: null})
     }
 
+
     render() {
-        const {favoriteList} = this.state
+
         return (
             //React.fragment shorthand
             <>
                 <Header>
-                    <FetchButton onClick={this.fetchRandomJokes} />
+                    <FetchButton fetchJokes={this.props.fetchJokes} />
                     <TimerButton
                         toggleTimer={this.toggleTimer}
                         disabled={this.state.favoriteList.length === 10}
@@ -149,15 +152,18 @@ class Main extends Component {
                 </Header>
                 <div style={{display: 'flex'}}>
                     <RandomList
-                        toggleFavorite={this.toggleFavorite}
-                        randomList={this.state.randomList}
-                        disabled={favoriteList.length > 9}
+                        toggleFavorite={this.props.toggleFavorite}
+                        //randomList={this.state.randomList}
+                        //disabled={favoriteList.length > 9}
                     />
-                    <FavoriteList removeFavorite={this.removeFavorite} favoriteList={this.state.favoriteList} />
+                    <FavoriteList
+                        toggleFavorite={this.props.toggleFavorite}
+                        favoriteList={this.state.favoriteList}
+                    />
                 </div>
             </>
         )
     }
 }
 
-export default Main
+export default connect(null, { fetchJokes, toggleFavorite })(Main)
