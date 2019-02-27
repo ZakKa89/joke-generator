@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import RandomList from '../components/RandomList'
 import FavoriteList from '../components/FavoriteList'
 import TimerButton from '../components/TimerButton'
@@ -115,17 +115,17 @@ class Main extends Component {
 
     startTimer = () => {
         let timer = setInterval(() => {
-            if (this.state.favoriteList.length === 10) {
+            if (this.props.favoriteList.length > 9) {
                 clearInterval(this.state.timer)
                 this.setState({timer: null})
             }
 
             if (1 === this.state.counter) {
-                this.addRandomFavorite()
+                this.props.fetchJokes(1)
             }
             //reset or decrement counter
             this.setState({counter: 0 === this.state.counter ? 5 : this.state.counter - 1})
-        }, 1000)
+        }, 100)
 
         this.setState({timer})
     }
@@ -135,35 +135,44 @@ class Main extends Component {
         this.setState({timer: null})
     }
 
+    toggleFavoriteHandler = (joke) => {
+        this.stopTimer()
+        this.props.toggleFavorite(joke)
+    }
 
     render() {
 
+        const { favoriteList, randomList, toggleFavorite} = this.props
+
         return (
-            //React.fragment shorthand
-            <>
+            <Fragment>
                 <Header>
                     <FetchButton fetchJokes={this.props.fetchJokes} />
                     <TimerButton
                         toggleTimer={this.toggleTimer}
-                        disabled={this.state.favoriteList.length === 10}
+                        disabled={favoriteList.length > 9}
                         timer={this.state.timer}
                         counter={this.state.counter}
                     />
                 </Header>
                 <div style={{display: 'flex'}}>
                     <RandomList
-                        toggleFavorite={this.props.toggleFavorite}
-                        //randomList={this.state.randomList}
-                        //disabled={favoriteList.length > 9}
+                        toggleFavorite={this.toggleFavoriteHandler}
+                        randomList={randomList}
+                        disabled={favoriteList.length > 9}
                     />
                     <FavoriteList
-                        toggleFavorite={this.props.toggleFavorite}
-                        favoriteList={this.state.favoriteList}
+                        toggleFavorite={toggleFavorite}
+                        favoriteList={favoriteList}
                     />
                 </div>
-            </>
+            </Fragment>
         )
     }
 }
 
-export default connect(null, { fetchJokes, toggleFavorite })(Main)
+const mapStateToProps = (state) => {
+    return { randomList: state.randomJokes, favoriteList: state.starredJokes}
+}
+
+export default connect(mapStateToProps, { fetchJokes, toggleFavorite })(Main)

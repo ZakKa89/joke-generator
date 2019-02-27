@@ -15,20 +15,18 @@ const FavoriteList = (props) => {
 				{favoriteList.length}/10
 			</ListHeader>
 
-			{favoriteList.map((item, i) => (
-				<JokeWrapper key={item.id}>
-					<DeleteButton onClick={() => toggleFavorite(item)} fixedWidth>
+			{favoriteList.map((joke, i) => (
+				<JokeWrapper key={joke.id}>
+					<DeleteButton onClick={() => toggleFavorite(joke)} fixedWidth>
 						<Icon icon={faTimes} />
 					</DeleteButton>
-					<Joke>{item.joke}</Joke>
+					<Joke>{joke.joke}</Joke>
 				</JokeWrapper>
 			))}
 		</div>
 	);
 };
 
-const mapStateToProps = (state) => {
-	return { favoriteList: state.starredJokes }
-};
 
-export default connect(mapStateToProps)(FavoriteList);
+
+export default FavoriteList;

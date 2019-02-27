@@ -6,7 +6,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { connect } from 'react-redux';
 
 const RandomList = (props) => {
-	const { randomList, toggleFavorite, setFavorite } = props;
+	const { randomList, toggleFavorite, disabled } = props;
 
 	return (
 		<div style={{ width: '50%', padding: '0 1rem' }}>
@@ -18,7 +18,7 @@ const RandomList = (props) => {
 				<JokeWrapper key={item.id}>
 					<StarButton
 						isFavorite={item.isFavorite}
-						//disabled={randomList.length > 9}
+						disabled={disabled}
 						onClick={() => toggleFavorite(item)}
 					>
 						<Icon icon={item.isFavorite ? faFullStar : faStar} />
