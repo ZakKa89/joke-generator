@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { FETCH_JOKES, FETCH_JOKE, TOGGLE_FAVORITE, FETCHING, FETCH_SUCCESS, FETCH_FAIL } from '../actions';
+import { FETCH_JOKES, FETCH_JOKE, TOGGLE_FAVORITE } from '../actions';
 
-//wip
+/* WIP
 function fetchStatus(state = null, action) {
 	switch (action.type) {
 		case FETCHING:
@@ -13,12 +13,19 @@ function fetchStatus(state = null, action) {
 		default:
 			return state;
 	}
-}
+}*/
 
 function randomJokes(state = [], action) {
 	//const { randomJokes, starredJokes, fetchedJokes, isFavorite } = action.payload;
 
 	switch (action.type) {
+		case FETCH_JOKE:
+			const fetchedJoke = action.payload.fetchedJoke;
+			const updatedJokes = state.map((joke) => {
+				const jokeExists = joke.id === fetchedJoke.id;
+				return jokeExists ? { ...joke, isFavorite: true } : joke;
+			});
+			return updatedJokes;
 		case FETCH_JOKES:
 			//find existing favorites
 			const fetchedJokes = action.payload.fetchedJokes.map((randomJoke) => {
@@ -44,9 +51,8 @@ function starredJokes(state = [], action) {
 	switch (action.type) {
 		case FETCH_JOKE:
 			const fetchedJoke = action.payload.fetchedJoke;
-			const starredJoke = action.payload.starredJokes.find((starredJoke) => starredJoke.id === fetchedJoke);
+			const starredJoke = action.payload.starredJokes.find((starredJoke) => starredJoke.id === fetchedJoke.id);
 			return starredJoke ? state : [ ...state, fetchedJoke ];
-
 		case TOGGLE_FAVORITE:
 			const jokeExists = state.some((joke) => joke.id === action.payload.id);
 			if (jokeExists) {

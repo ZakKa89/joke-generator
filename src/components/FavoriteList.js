@@ -2,7 +2,6 @@ import React from 'react';
 import { Joke, DeleteButton, JokeWrapper, ListHeader } from '../utilities/StyledComponents';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { faTimes, faStar } from '@fortawesome/free-solid-svg-icons';
-import { connect } from 'react-redux';
 
 const FavoriteList = (props) => {
 	const { favoriteList, toggleFavorite } = props;

@@ -6,10 +6,18 @@ import reducers from './reducers';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import { loadState, saveState } from './localStorage';
+import throttle from 'lodash/throttle';
 
+const persistedState = loadState();
 const fixDevTools = window.devToolsExtension ? window.devToolsExtension() : (f) => f;
+const store = createStore(reducers, persistedState, compose(applyMiddleware(thunk), fixDevTools));
 
-const store = createStore(reducers, compose(applyMiddleware(thunk), fixDevTools));
+store.subscribe(
+	throttle(() => {
+		saveState({ starredJokes: store.getState().starredJokes });
+	}, 300)
+);
 
 console.log(store);
 ReactDOM.render(
