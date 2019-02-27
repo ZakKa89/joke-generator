@@ -19,7 +19,6 @@ store.subscribe(
 	}, 300)
 );
 
-console.log(store);
 ReactDOM.render(
 	<Provider store={store}>
 		<App />

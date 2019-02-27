@@ -67,7 +67,7 @@ export const DeleteButton = styled(IconButton)({
     },
 })
 
-export const JokeWrapper = styled.div({
+export const JokeWrapper = styled.li({
     display: 'flex',
     alignItems: 'center',
     marginBottom: '.5rem',

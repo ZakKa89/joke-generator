@@ -14,18 +14,18 @@ const FavoriteList = (props) => {
 				{favoriteList.length}/10
 			</ListHeader>
 
-			{favoriteList.map((joke, i) => (
-				<JokeWrapper key={joke.id}>
-					<DeleteButton onClick={() => toggleFavorite(joke)} fixedWidth>
-						<Icon icon={faTimes} />
-					</DeleteButton>
-					<Joke>{joke.joke}</Joke>
-				</JokeWrapper>
-			))}
+			<ul>
+				{favoriteList.map((joke, i) => (
+					<JokeWrapper key={joke.id}>
+						<DeleteButton onClick={() => toggleFavorite(joke)} fixedWidth>
+							<Icon icon={faTimes} />
+						</DeleteButton>
+						<Joke>{joke.joke}</Joke>
+					</JokeWrapper>
+				))}
+			</ul>
 		</div>
 	);
 };
-
-
 
 export default FavoriteList;

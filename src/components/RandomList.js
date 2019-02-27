@@ -14,18 +14,20 @@ const RandomList = (props) => {
 				<Icon icon={faLaugh} />&nbsp;Random
 			</ListHeader>
 
-			{randomList.map((item, i) => (
-				<JokeWrapper key={item.id}>
-					<StarButton
-						isFavorite={item.isFavorite}
-						disabled={disabled}
-						onClick={() => toggleFavorite(item)}
-					>
-						<Icon icon={item.isFavorite ? faFullStar : faStar} />
-					</StarButton>
-					<Joke>{item.joke}</Joke>
-				</JokeWrapper>
-			))}
+			<ul>
+				{randomList.map((item) => (
+					<JokeWrapper key={item.id}>
+						<StarButton
+							isFavorite={item.isFavorite}
+							disabled={disabled}
+							onClick={() => toggleFavorite(item)}
+						>
+							<Icon icon={item.isFavorite ? faFullStar : faStar} />
+						</StarButton>
+						<Joke>{item.joke}</Joke>
+					</JokeWrapper>
+				))}
+			</ul>
 		</div>
 	);
 };
