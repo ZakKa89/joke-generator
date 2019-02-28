@@ -12,7 +12,7 @@ export function toggleFavorite(joke) {
 
 export const fetchJokes = (amount) => async (dispatch, getState) => {
 	try {
-		const response = await fetch(`http://api.icndb.com/jokes/random/${amount}?escape=javascript&limitTo=[nerdy]`);
+		const response = await fetch(`https://api.icndb.com/jokes/random/${amount}?escape=javascript&limitTo=[nerdy]`);
 		const data = await response.json();
 
 		if (data.type === 'success') {
